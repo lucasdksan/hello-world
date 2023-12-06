@@ -6,6 +6,8 @@ Route.group(()=>{
     Route.group(()=>{
         Route.get("/", "PainelController.index");
         Route.get("/users", "PainelController.users");
-        
+        Route.get("/user/:id?", "PainelController.user").where("id", Route.matchers.number());
+        Route.get("/user/:slug", "PainelController.userBySlug").where("slug", Route.matchers.slug());
+        Route.get("/docs/*", "PainelController.docs");
     }).prefix("painel");
 }).prefix("/api");

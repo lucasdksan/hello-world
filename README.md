@@ -20,7 +20,7 @@ Os principais motivos para a criação do AdonisJS incluem:
 
 ## Estruturas de Pastas
 
-**Observação: A versão do Adonis Utilizado para os estudos é a 4**
+*Observação: A versão do Adonis Utilizado para os estudos é a 4*
 
 1. App:
     - Descrição: Pasta principal do AdonisJS, onde os principais componentes da aplicação são organizados, incluindo models, middlewares, controllers, etc.
@@ -54,6 +54,66 @@ Os principais motivos para a criação do AdonisJS incluem:
     - Descrição: Tudo que estiver dentro só vai ser executado uma vez, geralmente durante a inicialização da aplicação.
     - Função: Permite a execução de tarefas específicas durante o início da aplicação. Isso pode incluir a configuração inicial, a inicialização de serviços, a conexão com bancos de dados, a definição de variáveis de ambiente e outras tarefas que precisam ocorrer apenas uma vez no início da execução da aplicação.
 
+## Rotas e Router
+
+No contexto do Adonis.js, "rotas" se refere aos caminhos dentro de uma aplicação web que podem ser acessados pelos usuários. O Adonis.js fornece um sistema de roteamento que permite definir essas rotas de forma fácil e organizada. O "Router" (roteador) é a parte do Adonis.js responsável por lidar com o roteamento de requisições HTTP.
+
+Aqui estão alguns conceitos e exemplos básicos de como trabalhar com rotas e o Router no Adonis.js:
+
+`
+// start/routes.js
+
+/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
+    const Route = use('Route');
+
+    // Rota básica
+    Route.get('/', 'HomeController.index');
+
+    // Rota com parâmetros
+    Route.get('/user/:id', 'UserController.show');
+
+    // Rota com middleware
+    Route.get('/profile', 'ProfileController.show').middleware(['auth']);
+
+    // Rota de recurso (CRUD)
+    Route.resource('posts', 'PostController');
+
+    // Rota agrupada
+    Route.group(() => {
+    Route.get('/dashboard', 'DashboardController.index');
+    Route.get('/settings', 'SettingsController.index');
+    }).prefix('admin').middleware(['auth']);
+`
+
+**Controladores:**
+
+Os controladores (controllers) são responsáveis por manipular as requisições HTTP associadas a uma rota. No exemplo acima, os controladores são HomeController, UserController, ProfileController, PostController, DashboardController e SettingsController.
+
+**Middleware:**
+
+Os middlewares são funções que podem ser executadas antes ou depois de uma rota ser manipulada. No exemplo acima, o middleware auth é aplicado à rota '/profile', exigindo autenticação antes de acessar o perfil.
+
+**Prefixo:**
+
+O método prefix permite adicionar um prefixo a um grupo de rotas, tornando a URL mais organizada. No exemplo, as rotas dentro do grupo 'admin' têm o prefixo '/admin'.
+
+**Rota de Recurso:**
+
+O método resource cria rotas CRUD para um controlador específico. No exemplo acima, Route.resource('posts', 'PostController') cria rotas para manipulação de posts.
+
+`// app/Controllers/Http/UserController.js
+
+class UserController {
+  show({ params }) {
+    const userId = params.id;
+    return `Detalhes do usuário ${userId}`;
+  }
+}
+
+module.exports = UserController;
+`
+
+Neste exemplo, a rota '/user/:id' é manipulada pelo método show do controlador UserController. O parâmetro id é acessado através de params.id.
 
 ## Referências
 
