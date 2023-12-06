@@ -60,7 +60,8 @@ No contexto do Adonis.js, "rotas" se refere aos caminhos dentro de uma aplicaç�
 
 Aqui estão alguns conceitos e exemplos básicos de como trabalhar com rotas e o Router no Adonis.js:
 
-`/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
+```javascript
+/** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
     const Route = use('Route');
 
     // Rota básica
@@ -79,7 +80,9 @@ Aqui estão alguns conceitos e exemplos básicos de como trabalhar com rotas e o
     Route.group(() => {
     Route.get('/dashboard', 'DashboardController.index');
     Route.get('/settings', 'SettingsController.index');
-    }).prefix('admin').middleware(['auth']);`
+    }).prefix('admin').middleware(['auth']);
+
+```
 
 **Controladores:**
 
@@ -97,7 +100,8 @@ O método prefix permite adicionar um prefixo a um grupo de rotas, tornando a UR
 
 O método resource cria rotas CRUD para um controlador específico. No exemplo acima, Route.resource('posts', 'PostController') cria rotas para manipulação de posts.
 
-`class UserController {
+```javascript
+class UserController {
   show({ params }) {
     const userId = params.id;
     return `Detalhes do usuário ${userId}`;
@@ -105,6 +109,7 @@ O método resource cria rotas CRUD para um controlador específico. No exemplo a
 }
 
 module.exports = UserController;`
+```
 
 Neste exemplo, a rota '/user/:id' é manipulada pelo método show do controlador UserController. O parâmetro id é acessado através de params.id.
 
