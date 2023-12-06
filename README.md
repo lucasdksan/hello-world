@@ -23,41 +23,41 @@ Os principais motivos para a criação do AdonisJS incluem:
 **Observação: A versão do Adonis Utilizado para os estudos é a 4**
 
 1. App:
-    1.1. Descrição: Pasta principal do AdonisJS, onde os principais componentes da aplicação são organizados, incluindo models, middlewares, controllers, etc.
-    1.2. Função: Organiza a estrutura da aplicação seguindo o padrão MVC, facilitando a manutenção e expansão do código.
+    - Descrição: Pasta principal do AdonisJS, onde os principais componentes da aplicação são organizados, incluindo models, middlewares, controllers, etc.
+    - Função: Organiza a estrutura da aplicação seguindo o padrão MVC, facilitando a manutenção e expansão do código.
 
 2. Commands:
-    2.1. Descrição: Responsável por armazenar comandos personalizados para o ACE (Adonis Command-line Environment).
-    2.2. Função: Permite a criação de comandos personalizados para automatizar tarefas específicas do projeto.
+    - Descrição: Responsável por armazenar comandos personalizados para o ACE (Adonis Command-line Environment).
+    - Função: Permite a criação de comandos personalizados para automatizar tarefas específicas do projeto.
 
 3. Config:
-    3.1. Descrição: Contém todas as configurações da aplicação.
-    3.2.Função: Centraliza as configurações do projeto, como configurações de banco de dados, autenticação, e outras opções personalizáveis.
+    - Descrição: Contém todas as configurações da aplicação.
+    - Função: Centraliza as configurações do projeto, como configurações de banco de dados, autenticação, e outras opções personalizáveis.
 
 4. Contracts:
-    4.1. Descrição: Define contratos da aplicação, estabelecendo como certos serviços ou funcionalidades devem ser implementados.
-    4.2. Função: Padroniza a implementação de recursos, facilitando a colaboração entre diferentes partes do código.
+    - Descrição: Define contratos da aplicação, estabelecendo como certos serviços ou funcionalidades devem ser implementados.
+    - Função: Padroniza a implementação de recursos, facilitando a colaboração entre diferentes partes do código.
 
 5. Providers:
-    5.1. Descrição: Registra os provedores de serviços que a aplicação utiliza.
-    5.2. Função: Gerencia a inicialização e configuração de serviços que podem ser compartilhados em toda a aplicação.
+    - Descrição: Registra os provedores de serviços que a aplicação utiliza.
+    - Função: Gerencia a inicialização e configuração de serviços que podem ser compartilhados em toda a aplicação.
 
 6. Public:
-    6.1. Descrição: Contém recursos que são acessíveis publicamente, como arquivos estáticos, imagens, etc.
-    6.2. Função: Fornece uma área para armazenar recursos que podem ser acessados diretamente pelo usuário.
+    - Descrição: Contém recursos que são acessíveis publicamente, como arquivos estáticos, imagens, etc.
+    - Função: Fornece uma área para armazenar recursos que podem ser acessados diretamente pelo usuário.
 
 7. Resources:
-    7.1. Descrição: Guarda tudo o que o usuário acessa, mas já renderizado. Isso pode incluir arquivos estáticos, como imagens, folhas de estilo (CSS), scripts (JavaScript) e, como você mencionou, views já renderizadas.
-    7.2. Função: Geralmente usado para armazenar arquivos adicionais, como views, que são usados pela aplicação. Também pode conter outros recursos estáticos necessários para a interface do usuário.
+    - Descrição: Guarda tudo o que o usuário acessa, mas já renderizado. Isso pode incluir arquivos estáticos, como imagens, folhas de estilo (CSS), scripts (JavaScript) e, como você mencionou, views já renderizadas.
+    - Função: Geralmente usado para armazenar arquivos adicionais, como views, que são usados pela aplicação. Também pode conter outros recursos estáticos necessários para a interface do usuário.
 
 8. Start:
-    8.1. Descrição: Tudo que estiver dentro só vai ser executado uma vez, geralmente durante a inicialização da aplicação.
-    8.2. Função: Permite a execução de tarefas específicas durante o início da aplicação. Isso pode incluir a configuração inicial, a inicialização de serviços, a conexão com bancos de dados, a definição de variáveis de ambiente e outras tarefas que precisam ocorrer apenas uma vez no início da execução da aplicação.
+    - Descrição: Tudo que estiver dentro só vai ser executado uma vez, geralmente durante a inicialização da aplicação.
+    - Função: Permite a execução de tarefas específicas durante o início da aplicação. Isso pode incluir a configuração inicial, a inicialização de serviços, a conexão com bancos de dados, a definição de variáveis de ambiente e outras tarefas que precisam ocorrer apenas uma vez no início da execução da aplicação.
 
 
 ## Referências
 
-[Adonis Js URL](https://docs.adonisjs.com/guides/introduction)
-[B7Web](https://lp.b7web.com.br/)
-[Chat GPT](https://chat.openai.com/)
-[TabNews](https://www.tabnews.com.br/)
+- [Adonis Js URL](https://docs.adonisjs.com/guides/introduction)
+- [B7Web](https://lp.b7web.com.br/)
+- [Chat GPT](https://chat.openai.com/)
+- [TabNews](https://www.tabnews.com.br/)
