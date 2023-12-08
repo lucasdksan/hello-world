@@ -2,7 +2,13 @@
 
 export default class HomeController {
     async index({ view }){
-        return view.render('welcome');
+        return view.render('homepage', {
+            user: {
+                name: "Lucas da Silva",
+                year: 26,
+                techs: [ "JavaScript", "HTML", "css", "Adonis" ]
+            }
+        });
     }
 
     async sobre(){

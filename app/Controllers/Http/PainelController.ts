@@ -12,8 +12,10 @@ export default class PainelController {
         }
     ]
 
-    async index(){
-        return { response: "Parabéns você acessou o painel de controle!"};
+    async index({ response }){
+        let json = { hello: "World" };
+
+        response.status(200).send(json);
     }
 
     async users(){
