@@ -113,6 +113,153 @@ module.exports = UserController;`
 
 Neste exemplo, a rota '/user/:id' é manipulada pelo método show do controlador UserController. O parâmetro id é acessado através de params.id.
 
+## Views e Template Engine
+
+**Views no AdonisJS:**
+
+Em AdonisJS, as "views" representam a camada de apresentação da aplicação, onde você define como os dados devem ser renderizados e exibidos para o usuário. As views geralmente são arquivos que contêm marcação HTML, e AdonisJS oferece suporte a uma variedade de template engines para facilitar a renderização dinâmica dessas views.
+
+**Template Engine no AdonisJS:**
+
+O AdonisJS permite o uso de diferentes engines de template para facilitar a criação de views dinâmicas. Na versão padrão do AdonisJS, a template engine é o "Edge," que é um mecanismo de template desenvolvido internamente. O Edge é semelhante ao EJS (Embedded JavaScript) e fornece uma sintaxe clara e concisa para incorporar lógica de controle e dados diretamente nas views.
+
+Exemplo básico de uma view usando a engine Edge:
+
+```javascript
+<!-- arquivo views/welcome.edge -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+</body>
+</html>
+```
+
+**Como renderizar uma view no AdonisJS:**
+
+No seu controlador do AdonisJS, você pode usar o método view para renderizar uma view específica, passando dados conforme necessário:
+
+
+```javascript
+// exemplo de um método em um controlador
+async welcome({ view }) {
+  return view.render('welcome', { title: 'Página de Boas-Vindas', message: 'Bem-vindo ao AdonisJS!' });
+}
+```
+
+Neste exemplo, o método welcome renderiza a view "welcome.edge" e passa alguns dados para serem usados na renderização.
+
+Lembre-se de configurar corretamente o caminho para suas views no arquivo config/view.js do seu projeto AdonisJS. Esse arquivo define configurações relacionadas à renderização de views, incluindo a escolha da template engine.
+
+**Configuração da Template Engine:**
+
+No AdonisJS, a configuração da template engine (Edge, por padrão) é feita no arquivo config/view.js. Lá, você pode especificar detalhes sobre a localização dos arquivos de view, opções da template engine e até mesmo registrar extensões de arquivos personalizadas.
+
+Exemplo de configuração básica:
+
+```javascript
+module.exports = {
+  /*
+  |--------------------------------------------------------------------------
+  | View Renderer
+  |--------------------------------------------------------------------------
+  |
+  | By default, AdonisJS will use the Edge templating engine to render views.
+  | However, you can choose a different templating engine by specifying the
+  | desired engine here and install the same.
+  |
+  */
+  viewEngine: 'edge',
+
+  /*
+  |--------------------------------------------------------------------------
+  | Cache
+  |--------------------------------------------------------------------------
+  |
+  | Whether to cache the compiled templates or not. If set to true, compiled
+  | templates are stored in memory to reduce disk I/O and increase speed.
+  |
+  */
+  cache: false,
+};
+```
+
+**Layouts e Partials:**
+
+O AdonisJS suporta layouts e partials para ajudar a organizar as views de maneira mais modular. Layouts são usados para definir a estrutura geral da página, enquanto partials são pedaços reutilizáveis de código que podem ser incluídos em várias views.
+
+Exemplo de layout (main.edge):
+
+```javascript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {{ content }}
+</body>
+</html>
+```
+
+Exemplo de view usando um layout (welcome.edge):
+
+```javascript
+@extends('layouts.main')
+
+@section('content')
+    <h1>{{ title }}</h1>
+    <p>{{ message }}</p>
+@endsection
+```
+
+**Compartilhamento de Dados Globais:**
+
+Você pode compartilhar dados globais com todas as views da sua aplicação usando o View Global, que é configurado no arquivo start/global.js. Isso é útil para incluir informações que são necessárias em várias partes da sua aplicação.
+
+Exemplo:
+
+```javascript
+const View = use('View');
+
+View.global('appName', 'Meu App');
+```
+
+Agora, você pode acessar appName em qualquer view sem precisar passar explicitamente.
+
+## Models e Hooks
+
+**Active Record Pattern**
+
+
+O padrão Active Record é um padrão arquitetural utilizado no desenvolvimento de software, especialmente no contexto de frameworks de mapeamento objeto-relacional (ORM). Ele é uma maneira de representar dados armazenados em um banco de dados relacional como objetos em uma linguagem de programação orientada a objetos.
+
+Principais componentes do padrão Active Record incluem:
+
+1. **Classe de Entidade (Modelo):** A classe de entidade representa uma tabela em um banco de dados relacional. Cada instância da classe geralmente corresponde a uma linha na tabela, e cada atributo da classe corresponde a uma coluna na tabela.
+
+2. **Tabela do Banco de Dados:** Cada classe de entidade está associada a uma tabela de banco de dados. Os atributos da classe mapeiam para as colunas da tabela, e as instâncias da classe correspondem a linhas na tabela.
+
+3. **Operações CRUD:** O padrão Active Record fornece métodos para realizar operações CRUD (Criar, Ler, Atualizar, Deletar) no banco de dados. Esses métodos estão frequentemente diretamente associados à classe de entidade.
+
+4. **Relacionamentos:** O Active Record suporta a definição e o gerenciamento de relacionamentos entre diferentes classes de entidade, como relacionamentos um-para-um, um-para-muitos e muitos-para-muitos. Esses relacionamentos são geralmente expressos por meio das definições das classes de entidade.
+
+5. **Validação:** O Active Record frequentemente inclui mecanismos para validar dados antes que sejam persistidos no banco de dados. Isso ajuda a garantir que os dados atendam a determinados critérios ou restrições.
+
+6. **Consulta:** O Active Record fornece uma maneira de expressar consultas de banco de dados usando o paradigma orientado a objetos, permitindo que os desenvolvedores interajam com o banco de dados usando uma sintaxe familiar.
+
+7. **Persistência:** O padrão lida com o mapeamento de objetos para registros do banco de dados e vice-versa, fornecendo uma camada de abstração para que os desenvolvedores possam trabalhar com objetos em seu código, em vez de lidar diretamente com consultas e atualizações de banco de dados.
+
+Frameworks populares de ORM, como ActiveRecord no Ruby on Rails, ORM no Django e Hibernate para Java, implementam o padrão Active Record. Esses frameworks simplificam a interação com o banco de dados, permitindo que os desenvolvedores trabalhem com objetos em sua linguagem de programação preferida, em vez de escrever consultas SQL diretamente. Essa abstração ajuda a melhorar a organização do código, a manutenibilidade e a legibilidade.
+
 ## Referências
 
 - [Adonis Js URL](https://docs.adonisjs.com/guides/introduction)

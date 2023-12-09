@@ -7,7 +7,21 @@ export default class HomeController {
                 name: "Lucas da Silva",
                 year: 26,
                 techs: [ "JavaScript", "HTML", "css", "Adonis" ]
-            }
+            },
+            users: [
+                {
+                    name: "Lucas da Silva",
+                    year: 26,
+                    admin: true,
+                    techs: [ "JavaScript", "HTML", "css", "Adonis" ]
+                },
+                {
+                    name: "Aline",
+                    year: 26,
+                    admin: false,
+                    techs: [ "JavaScript", "HTML", "css", "Adonis" ]
+                }
+            ]
         });
     }
 

@@ -17,6 +17,14 @@
                 <li>Tech: {{tech}}</li>
             @end
         </ul>
+        <div> Admins</div>
+        <ul>
+            @each(user in users)
+                @if(!user.admin)
+                    <li>{{user.name}}</li>
+                @end
+            @end
+        </ul>
     </div>
 </body>
 </html>
