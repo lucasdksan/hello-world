@@ -1,3 +1,5 @@
+import User from "App/Models/User";
+
 export default class PainelController {
     protected users_list = [
         {
@@ -42,5 +44,15 @@ export default class PainelController {
         console.log(params["*"]);
 
         return params["*"];
+    }
+
+    async createUser({  }){
+        const user = new User();
+        user.name = "Lucas"
+        user.age="25"
+        user.password = "asdadawad511"
+        await user.save();
+
+        return user;
     }
 }

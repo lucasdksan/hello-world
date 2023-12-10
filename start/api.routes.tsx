@@ -9,5 +9,6 @@ Route.group(()=>{
         Route.get("/user/:id?", "PainelController.user").where("id", Route.matchers.number());
         Route.get("/user/:slug", "PainelController.userBySlug").where("slug", Route.matchers.slug());
         Route.get("/docs/*", "PainelController.docs");
-    }).prefix("painel");
+        Route.get("/create/user", "PainelController.createUser")
+    }).prefix("/painel");
 }).prefix("/api");
